@@ -1,0 +1,179 @@
+
+/* ==================================================
+   CarPal color isolation
+   ================================================== */
+
+   #carpal-top {
+    /* Brand text colors */
+    [class~="text-primary"] {
+      color: #3078bf !important;
+    }
+  
+    [class~="text-primary/80"] {
+      color: rgb(48 120 191 / 80%) !important;
+    }
+  
+    [class~="text-secondary"] {
+      color: #239e95 !important;
+    }
+  
+    [class~="text-accent"] {
+      color: #d9aa50 !important;
+    }
+  
+    [class~="text-foreground"] {
+      color: #1b293b !important;
+    }
+  
+    [class~="text-muted-foreground"] {
+      color: #68778b !important;
+    }
+  
+    /* Brand background colors */
+    [class~="bg-primary"] {
+      background-color: #3078bf !important;
+    }
+  
+    [class~="bg-primary/10"] {
+      background-color: rgb(48 120 191 / 10%) !important;
+    }
+  
+    [class~="bg-secondary"] {
+      background-color: #239e95 !important;
+    }
+  
+    [class~="bg-secondary/10"] {
+      background-color: rgb(35 158 149 / 10%) !important;
+    }
+  
+    [class~="bg-secondary/15"] {
+      background-color: rgb(35 158 149 / 15%) !important;
+    }
+  
+    [class~="bg-accent/10"] {
+      background-color: rgb(217 170 80 / 10%) !important;
+    }
+  
+    [class~="bg-muted"] {
+      background-color: #f1f4f7 !important;
+    }
+  
+    /* Brand borders */
+    [class~="border-border"] {
+      border-color: #dce2e9 !important;
+    }
+  
+    [class~="border-accent/30"] {
+      border-color: rgb(217 170 80 / 30%) !important;
+    }
+  
+    /* Gold deal score and statistics */
+    [class~="text-[hsl(var(--accent))]"] {
+      color: #d9aa50 !important;
+    }
+  
+    .carpal-counter {
+      color: #d9aa50 !important;
+    }
+  
+    /* Market value progress bars */
+    .carpal-market-fill {
+      background-color: #3078bf !important;
+    }
+  }
+
+  /* Keep CarPal's theme independent of the host website */
+#carpal-top {
+  --background: 0 0% 100%;
+  --foreground: 218 35% 16%;
+
+  --primary: 212 60% 47%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 175 64% 38%;
+  --secondary-foreground: 0 0% 100%;
+
+  --accent: 39 71% 57%;
+  --accent-foreground: 218 35% 16%;
+
+  --muted: 210 30% 96%;
+  --muted-foreground: 215 14% 47%;
+
+  --border: 214 28% 90%;
+  --ring: 212 60% 47%;
+  --navy: 218 50% 14%;
+
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+/* Prevent host section styles from affecting CarPal */
+#carpal-top section {
+  display: block;
+  min-height: 0;
+  flex-grow: 0;
+  align-items: initial;
+  justify-content: initial;
+}
+
+/* Explicit brand colors */
+#carpal-top [class~="text-primary"] {
+  color: #3078bf !important;
+}
+
+#carpal-top [class~="text-secondary"] {
+  color: #239e95 !important;
+}
+
+#carpal-top [class~="text-accent"],
+#carpal-top .carpal-counter {
+  color: #d9aa50 !important;
+}
+
+#carpal-top [class~="bg-primary"] {
+  background-color: #3078bf !important;
+}
+
+#carpal-top [class~="bg-secondary"] {
+  background-color: #239e95 !important;
+}
+
+#carpal-top .carpal-market-fill {
+  background-color: #3078bf !important;
+}
+
+/* Keep CarPal button text white */
+#carpal-top button,
+#carpal-top button *,
+#carpal-top a[class*="bg-primary"],
+#carpal-top a[class*="bg-secondary"] {
+  color: #ffffff !important;
+}
+
+#carpal-top a {
+  color: #3078bf;
+}
+
+/* Reset host global span color inside CarPal */
+#carpal-top span {
+  color: inherit;
+}
+
+/* Hero secondary link only */
+#carpal-top .carpal-hero-link,
+#carpal-top .carpal-hero-link span {
+  color: #3078bf !important;
+}
+
+/* Footer links stay grey */
+#carpal-top footer a,
+#carpal-top footer a span {
+  color: #68778b !important;
+}
+
+/* Market value animation — only control color and transition */
+#carpal-top .carpal-market-fill {
+  background-color: #3078bf !important;
+  transition: width 1.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
