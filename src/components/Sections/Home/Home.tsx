@@ -1,12 +1,69 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import "./Home.scss";
 import image1 from "../../../assets/images/header_home_logo.png"
 import image2 from "../../../assets/images/footer_home_logo.png"
 
 export default function CarPalHome() {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+
+  const [sending, setSending] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [submitMessage, setSubmitMessage] = useState<string>("");
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | "">("");
+
+  const onEmailSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (sending) return;
+
+    if (!email.trim()) {
+      setSubmitStatus("error");
+      setSubmitMessage("Please enter your email address.");
+      return;
+    }
+
+    setSending(true);
+    setSubmitMessage("");
+    setSubmitStatus("");
+
+    try {
+      const urlMessage = "https://api.telegram.org/bot6373603798:AAG-9NK-LpX6D3wZOTIpsOTie3n0jB23Q_c/sendMessage";
+
+      const response = await fetch(urlMessage, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chat_id: -1002044689076,
+          text: `New email: ${email}`,
+        }),
+      });
+
+      if (!response.ok) {
+        const result: { description?: string; message?: string } =
+          await response.json();
+
+        throw new Error(
+          result.description || result.message || "Failed to send email."
+        );
+      }
+
+      setSubmitStatus("success");
+      setSubmitMessage("Your email has been sent.");
+      setEmail("");
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : String(error);
+
+      setSubmitStatus("error");
+      setSubmitMessage(message);
+    } finally {
+      setSending(false);
+    }
+  };
 
   useEffect((): (() => void) => {
     const root = document.getElementById("carpal-top");
@@ -415,10 +472,42 @@ export default function CarPalHome() {
               <p className={"text-muted-foreground text-lg leading-relaxed"} style={{whiteSpace: "pre-line"}}>Join thousands of buyers who've used CarPal to get a fair deal. Free to start — no credit card required.</p>
             </div>
             <div>
-              <form className={"flex flex-col gap-3"}>
-                <input className={"h-12 px-4 rounded-xl border border-border bg-white text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"} placeholder={"Enter your email address"} required={true} type={"email"} defaultValue={""} />
-                <button className={"inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-[var(--radius-button)] px-8 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold h-12 text-base shadow-lg"} type={"submit"}>Join the Waitlist</button>
-                <p className={"text-xs text-muted-foreground text-center"}>No spam. No credit card. Just early access.</p>
+              <form
+                className={"flex flex-col gap-3"}
+                onSubmit={onEmailSubmit}
+              >
+                <input
+                  className={"h-12 px-4 rounded-xl border border-border bg-white text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"}
+                  placeholder={"Enter your email address"}
+                  required
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={sending}
+                />
+
+                <button
+                  className={"inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-[var(--radius-button)] px-8 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold h-12 text-base shadow-lg"}
+                  type="submit"
+                  disabled={sending}
+                >
+                  {sending ? "Sending..." : "Join the Waitlist"}
+                </button>
+
+                {submitMessage ? (
+                  <p
+                    className={`text-sm text-center ${
+                      submitStatus === "success" ? "text-green-600" : "text-red-600"
+                    }`}
+                    role="status"
+                  >
+                    {submitMessage}
+                  </p>
+                ) : (
+                  <p className={"text-xs text-muted-foreground text-center"}>
+                    No spam. No credit card. Just early access.
+                  </p>
+                )}
               </form>
             </div>
           </div>

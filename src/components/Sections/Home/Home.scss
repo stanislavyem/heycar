@@ -177,3 +177,11 @@
   background-color: #3078bf !important;
   transition: width 1.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+#carpal-top {
+  button,
+  a[role="button"],
+  a.inline-flex {
+    border-radius: 12px !important;
+  }
+}
