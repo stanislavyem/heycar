@@ -1,0 +1,150 @@
+{
+  "site": {
+    "lang": "en",
+    "meta": [
+      {
+        "name": "description",
+        "content": "CarPal is your AI car-buying advocate: find the right car, check its market value and history, compare options and negotiate with dealerships. We work for you."
+      },
+      {
+        "title": "CarPal | Independent AI Car Buying Advocate"
+      },
+      {
+        "property": "og:site_name",
+        "content": "CarPal"
+      },
+      {
+        "name": "author",
+        "content": "CarPal"
+      },
+      {
+        "name": "theme-color",
+        "content": "#e9eef3"
+      }
+    ],
+    "links": [
+      {
+        "rel": "icon",
+        "href": "https://irp.cdn-website.com/aec24963/dms3rep/multi/opt/carpal-favicon-256w.png"
+      }
+    ],
+    "scripts": []
+  },
+  "routes": {
+    "/": {
+      "meta": [
+        {
+          "title": "CarPal | Independent AI Car Buying Advocate"
+        },
+        {
+          "name": "description",
+          "content": "CarPal is your AI car-buying advocate: find the right car, check its market value and history, compare options and negotiate with dealerships. We work for you."
+        },
+        {
+          "property": "og:type",
+          "content": "website"
+        },
+        {
+          "property": "og:title",
+          "content": "CarPal | Independent AI Car Buying Advocate"
+        },
+        {
+          "property": "og:description",
+          "content": "CarPal is your AI car-buying advocate: find the right car, check its market value and history, compare options and negotiate with dealerships. We work for you."
+        },
+        {
+          "property": "og:image",
+          "content": "https://irp.cdn-website.com/aec24963/dms3rep/multi/opt/carpal-hero-sedan-1200w.png"
+        },
+        {
+          "property": "og:image:alt",
+          "content": "Graphite sedan in a studio, the kind of car CarPal helps you buy"
+        },
+        {
+          "name": "twitter:card",
+          "content": "summary_large_image"
+        },
+        {
+          "name": "twitter:title",
+          "content": "CarPal | Independent AI Car Buying Advocate"
+        },
+        {
+          "name": "twitter:description",
+          "content": "CarPal is your AI car-buying advocate: find the right car, check its market value and history, compare options and negotiate with dealerships. We work for you."
+        },
+        {
+          "name": "twitter:image",
+          "content": "https://irp.cdn-website.com/aec24963/dms3rep/multi/opt/carpal-hero-sedan-1200w.png"
+        }
+      ],
+      "scripts": [
+        {
+          "type": "application/ld+json",
+          "children": "{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Who does CarPal work for?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"You. CarPal is paid by buyers and never by dealerships, so nothing in its advice is shaped by who wants to sell you a car.\"}},{\"@type\":\"Question\",\"name\":\"Can it help with a car I already found?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. Paste in a listing and CarPal returns the market range, the history and any fees worth questioning before you speak to the seller.\"}},{\"@type\":\"Question\",\"name\":\"Does CarPal negotiate for me?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"It drafts your offers and counter-offers and can message the dealership on your behalf. You approve every message before it goes out and you make the final call.\"}},{\"@type\":\"Question\",\"name\":\"New cars or used?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Both. For new cars CarPal focuses on invoice-versus-sticker gaps and add-ons; for used cars it adds history and condition checks.\"}},{\"@type\":\"Question\",\"name\":\"When can I try it?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"CarPal is opening to buyers in small groups. Join the waitlist and we will email you when your place is ready.\"}}]}"
+        }
+      ]
+    },
+    "/$": {
+      "meta": [
+        {
+          "title": "Page not found — CarPal"
+        },
+        {
+          "name": "robots",
+          "content": "noindex"
+        }
+      ]
+    },
+    "/analyze": {
+      "meta": [
+        {
+          "title": "Check a Car: Value, History and Fees | CarPal"
+        },
+        {
+          "name": "description",
+          "content": "Paste a listing link or enter a car’s details and CarPal checks its fair market value, vehicle history and dealer fees before you negotiate a price."
+        },
+        {
+          "property": "og:type",
+          "content": "website"
+        },
+        {
+          "property": "og:title",
+          "content": "Check a Car: Value, History and Fees | CarPal"
+        },
+        {
+          "property": "og:description",
+          "content": "Paste a listing link or enter a car’s details and CarPal checks its fair market value, vehicle history and dealer fees before you negotiate a price."
+        },
+        {
+          "property": "og:image",
+          "content": "https://irp.cdn-website.com/aec24963/dms3rep/multi/opt/carpal-hero-sedan-1200w.png"
+        },
+        {
+          "property": "og:image:alt",
+          "content": "Graphite sedan in a studio, the kind of car CarPal helps you buy"
+        },
+        {
+          "name": "twitter:card",
+          "content": "summary_large_image"
+        },
+        {
+          "name": "twitter:title",
+          "content": "Check a Car: Value, History and Fees | CarPal"
+        },
+        {
+          "name": "twitter:description",
+          "content": "Paste a listing link or enter a car’s details and CarPal checks its fair market value, vehicle history and dealer fees before you negotiate a price."
+        },
+        {
+          "name": "twitter:image",
+          "content": "https://irp.cdn-website.com/aec24963/dms3rep/multi/opt/carpal-hero-sedan-1200w.png"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "src": "https://irp.cdn-website.com/aec24963/dms3rep/multi/opt/carpal-logo-v2-480w.png",
+    "alt": "CarPal"
+  }
+}

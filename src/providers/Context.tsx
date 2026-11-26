@@ -5,7 +5,6 @@ import { createContext, useEffect, useState } from "react";
 
 export const AppContext = createContext<IAppState | undefined>(undefined)
 
-
 export const Context = ({children}: {children: JSX.Element[] | JSX.Element}): JSX.Element => {
 
 	const [modal, setModal] = useState<React.RefObject<IModalFunctions>>()
