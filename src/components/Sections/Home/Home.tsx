@@ -1,6 +1,5 @@
 
 'use client'
-import settings from "@/config/settings.json";
 import { Button } from '@/app/ui/button'
 import { Reveal } from '@/app/blocks/reveal'
 import { RuledFeatures } from '@/app/blocks/ruled-features'
@@ -8,24 +7,27 @@ import { FaqPanel } from '@/app/blocks/faq-panel'
 import { ContactForm } from '@/app/blocks/contact-form'
 import { PatternBackdrop } from '@/app/blocks/pattern-backdrop'
 import { TextReveal } from '@/app/super-blocks/text-reveal'
+import Link from 'next/link';
+import { CarCheck } from "../Home/car-check";
+import { CompareTable } from "../Home/compare-table";
 
 
 const lots = [
   {
     title: "Discover",
-    description: "Tell CarPal how you drive and what you can spend. It searches listings and shortlists the cars that fit, not the ones a dealer wants to move.",
+    description: "Describe the car you are looking for. CarPal searches listings and shortlists the cars that fit.",
   },
   {
     title: "Evaluate",
-    description: "Every car gets a fair market range and a plain-English history: owners, accidents, service gaps and recalls, checked before you visit.",
+    description: "Every car is checked for its fair market price and its history: owners, accidents, service gaps and recalls.",
   },
   {
     title: "Compare",
-    description: "Set two or three finalists side by side on true cost: price, fees, fuel, insurance and what each is likely to be worth in five years.",
+    description: "Set your finalists side by side on the full cost: price, fees, fuel and insurance.",
   },
   {
     title: "Negotiate",
-    description: "CarPal spots padded fees, drafts your counter-offers and talks to the dealership with you, so you never haggle alone.",
+    description: "Yes. CarPal negotiates with the dealership on your behalf. You review the final deal and approve it before anything is signed.",
   },
 ];
 
@@ -40,8 +42,8 @@ const sheetRows = [
 const promises = [
   "We take no commission from dealerships.",
   "We run no paid or promoted listings.",
-  "We show you every fee before you walk in.",
-  "We never share your details with a seller.",
+  "We show you every fee before you sign.",
+  "You approve the final deal before anything is signed.",
 ];
 
 const faqs = [
@@ -62,8 +64,12 @@ const faqs = [
     answer: "Both. For new cars CarPal focuses on invoice-versus-sticker gaps and add-ons; for used cars it adds history and condition checks.",
   },
   {
-    question: "When can I try it?",
-    answer: "CarPal is opening to buyers in small groups. Join the waitlist and we will email you when your place is ready.",
+    question: "How much does CarPal cost?",
+    answer: "CarPal charges a flat $499 only if you end up buying or leasing a car through us..",
+  },
+  {
+    question: "How do I start?",
+    answer: "Paste a listing link or enter the car's details, and CarPal takes it from there.",
   },
 ];
 
@@ -78,11 +84,11 @@ export default function Home() {
               The dealership has a salesman. Now you have a pal.
             </h1>
             <p className="mt-6 max-w-prose text-lg text-muted-foreground md:text-xl">
-              CarPal finds the right car, checks what it is really worth and negotiates the deal with you. We work for the buyer, not the dealership.
+              CarPal finds the right car, checks what it is really worth and negotiates with the dealership for you. We work for the buyer, not the dealership.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <Button size="lg" nativeButton={false} render={<a href="#join" />}>
-                Join the waitlist
+              <Button size="lg" nativeButton={false} render={<a href="#check" />}>
+                Check a car, $499
               </Button>
               <a href="#how-it-works" className="text-base underline underline-offset-4 hover:text-primary">
                 See how it works
@@ -108,6 +114,22 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="check" className="scroll-mt-20 border-b border-border bg-surface py-16 md:py-24">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-16">
+          <div>
+            <h2 className="font-display text-(length:--display-h2-size) leading-(--display-h2-leading) font-medium tracking-(--display-h2-tracking)">
+              Check a car before you talk price.
+            </h2>
+            <p className="mt-4 max-w-prose text-lg text-muted-foreground">
+              Paste a listing or enter the details yourself. You get the fair market range, the history and every fee worth questioning.
+            </p>
+            <p className="mt-8 font-display text-5xl font-medium">$499</p>
+            <p className="mt-1 text-muted-foreground">Flat fee, charged only if you buy or lease a car through CarPal.</p>
+          </div>
+          <CarCheck />
+        </div>
+      </section>
+
       <section id="how-it-works" className="scroll-mt-20 py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="max-w-3xl font-display text-(length:--display-h2-size) leading-(--display-h2-leading) font-medium tracking-(--display-h2-tracking)">
@@ -115,6 +137,17 @@ export default function Home() {
           </h2>
           <Reveal className="mt-12">
             <RuledFeatures items={lots} columns={4} numbered />
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="compare" className="scroll-mt-20 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 className="mb-12 max-w-3xl font-display text-(length:--display-h2-size) leading-(--display-h2-leading) font-medium tracking-(--display-h2-tracking)">
+            How CarPal stacks up against the usual routes.
+          </h2>
+          <Reveal>
+            <CompareTable />
           </Reveal>
         </div>
       </section>
@@ -140,10 +173,10 @@ export default function Home() {
           </Reveal>
           <Reveal>
             <h2 className="font-display text-(length:--display-h2-size) leading-(--display-h2-leading) font-medium tracking-(--display-h2-tracking)">
-              Every car gets a sheet. Every number is shown.
+              A clear report on every car.
             </h2>
             <p className="mt-4 max-w-prose text-lg text-muted-foreground">
-              A sample CarPal sheet for the SUV above. You see what it is worth, what is hiding in the fees and what to offer first.
+              A sample report for the SUV above: what it is worth, which fees to question and the price we open negotiations at.
             </p>
             <dl className="mt-8 border-t border-foreground">
               {sheetRows.map((row) => (
@@ -204,36 +237,23 @@ export default function Home() {
         </div>
       </section>
 
-      <PatternBackdrop as="section" pattern="grid" fade="edges" glow className="scroll-mt-20 border-t border-border bg-surface py-16 md:py-24" id="join">
+      {/* <PatternBackdrop as="section" pattern="grid" fade="edges" glow className="scroll-mt-20 border-t border-border bg-surface py-16 md:py-24" id="start">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
           <div>
             <h2 className="font-display text-(length:--display-h2-size) leading-(--display-h2-leading) font-medium tracking-(--display-h2-tracking)">
               Buy your next car with someone on your side.
             </h2>
             <p className="mt-4 max-w-prose text-lg text-muted-foreground">
-              Join the waitlist and we will email you the moment your place opens.
+              Paste a listing or enter the details. CarPal does the checking.
             </p>
           </div>
-          <div className="max-w-xl">
-            <ContactForm
-              formId="waitlist"
-              fields={[
-                { name: "name", label: "Name", required: true },
-                { name: "email", label: "Email", type: "email", required: true },
-                {
-                  name: "shopping",
-                  label: "What are you shopping for?",
-                  type: "select",
-                  options: ["A used car", "A new car", "Not sure yet"],
-                  placeholder: "Choose one",
-                },
-              ]}
-              submitLabel="Join the waitlist"
-              successMessage="You are on the list. We will email you when your place opens."
-            />
+          <div>
+          <Button size="lg" nativeButton={false} render={<Link href="/analyze" />}>
+            Check a car
+          </Button>
           </div>
         </div>
-      </PatternBackdrop>
+      </PatternBackdrop> */}
     </>
   );
 }

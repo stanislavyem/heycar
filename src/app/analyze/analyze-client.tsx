@@ -549,8 +549,8 @@ export default function AnalyzeClient() {
             </h1>
 
             <p className="mt-6 max-w-prose text-lg text-muted-foreground md:text-xl">
-              Paste a listing or enter the details yourself. CarPal returns
-              the fair market range, the history and any fees worth questioning.
+              Paste a listing or enter the details yourself. 
+              You get the fair market range, the history and every fee worth questioning.
             </p>
 
             <Tabs defaultValue="link" className="mt-12 max-w-2xl">

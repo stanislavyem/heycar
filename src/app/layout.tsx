@@ -54,7 +54,8 @@ export const metadata: Metadata = {
 };
 
 const links = [
-  { label: "Check a car", href: "/analyze" },
+  // { label: "Check a car", href: "/analyze" },
+  { label: "Compare", href: "/#compare" },
   { label: "How it works", href: "/#how-it-works" },
   { label: "Sample sheet", href: "/#sample" },
   { label: "Our promise", href: "/#promise" },
@@ -78,7 +79,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               />
             }
             links={links}
-            cta={{ label: "Join the waitlist", href: "/#join" }}
+            cta={{ label: "Check a car", href: "/analyze" }}
           />
 
           <main>{children}</main>
